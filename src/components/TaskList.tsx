@@ -1,3 +1,4 @@
+import { Task } from "./Task";
 import styles from "./TaskList.module.css";
 
 export function TaskList() {
@@ -13,7 +14,11 @@ export function TaskList() {
           <span className={styles.counter}>2 de 5</span>
         </div>
       </header>
-      <div></div>
+      <div className={styles.taskList}>
+        <Task />
+        <Task />
+        <Task />
+      </div>
     </main>
   );
 }
