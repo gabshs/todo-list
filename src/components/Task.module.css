@@ -18,6 +18,11 @@
   color: var(--gray-100);
 }
 
+.container .selected {
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
 .container button {
   border: none;
   background: transparent;
