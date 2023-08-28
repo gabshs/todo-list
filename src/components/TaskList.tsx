@@ -1,7 +1,12 @@
+import { ITask } from "../@types/task";
 import { Task } from "./Task";
 import styles from "./TaskList.module.css";
 
-export function TaskList() {
+interface TaskListProps {
+  tasks: ITask[];
+}
+
+export function TaskList({ tasks }: TaskListProps) {
   return (
     <main className={styles.container}>
       <header className={styles.header}>
@@ -15,9 +20,9 @@ export function TaskList() {
         </div>
       </header>
       <div className={styles.taskList}>
-        <Task />
-        <Task />
-        <Task />
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
+        ))}
       </div>
     </main>
   );
