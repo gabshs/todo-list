@@ -17,11 +17,22 @@ function App() {
 
     setTasks([...tasks, task]);
   }
+
+  function changeCompletedTask(taskId: number) {
+    const task = tasks.find((task) => task.id === taskId);
+
+    if (!task) return;
+
+    task.isSelected = !task.isSelected;
+
+    setTasks([...tasks]);
+  }
+
   return (
     <>
       <Header />
       <InputTask onCreateNewTask={createNewTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onCheckTask={changeCompletedTask} />
     </>
   );
 }
