@@ -1,4 +1,5 @@
 import { ITask } from "../@types/task";
+import { EmptyTaskList } from "./EmptyTaskLIst";
 import { Task } from "./Task";
 import styles from "./TaskList.module.css";
 
@@ -21,14 +22,16 @@ export function TaskList({ tasks, onCheckTask, onDeleteTask }: TaskListProps) {
         <div>
           <h3>Concluídas</h3>
           <span className={styles.counter}>
-            {totalOfCompletedTasks} de {totalOfTasks}
+            {totalOfTasks === 0 ? "0" : `${totalOfCompletedTasks} de ${totalOfTasks}`}
           </span>
         </div>
       </header>
       <div className={styles.taskList}>
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />
-        ))}
+        {tasks.length === 0 ? (
+          <EmptyTaskList />
+        ) : (
+          tasks.map((task) => <Task key={task.id} task={task} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />)
+        )}
       </div>
     </main>
   );
