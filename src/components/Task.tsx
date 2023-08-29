@@ -5,11 +5,16 @@ import { ITask } from "../@types/task";
 interface TaskProps {
   task: ITask;
   onCheckTask: (taskId: number) => void;
+  onDeleteTask: (taskId: number) => void;
 }
 
-export function Task({ task, onCheckTask }: TaskProps) {
+export function Task({ task, onCheckTask, onDeleteTask }: TaskProps) {
   function handleSelectTask() {
     onCheckTask(task.id);
+  }
+
+  function handleDeleteTask() {
+    onDeleteTask(task.id);
   }
 
   return (
@@ -19,7 +24,7 @@ export function Task({ task, onCheckTask }: TaskProps) {
         <label onClick={handleSelectTask} htmlFor={`checkbox-${task.id}`}></label>
       </div>
       <span className={task.isSelected ? styles.selected : ""}>{task.label}</span>
-      <button title="Apagar task">
+      <button onClick={handleDeleteTask} title="Apagar task">
         <Trash weight="bold" size={24} />
       </button>
     </div>

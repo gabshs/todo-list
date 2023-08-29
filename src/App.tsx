@@ -28,11 +28,17 @@ function App() {
     setTasks([...tasks]);
   }
 
+  function deleteTask(taskId: number) {
+    const filteredTasks = tasks.filter((task) => task.id !== taskId);
+
+    setTasks(filteredTasks);
+  }
+
   return (
     <>
       <Header />
       <InputTask onCreateNewTask={createNewTask} />
-      <TaskList tasks={tasks} onCheckTask={changeCompletedTask} />
+      <TaskList tasks={tasks} onCheckTask={changeCompletedTask} onDeleteTask={deleteTask} />
     </>
   );
 }

@@ -5,9 +5,10 @@ import styles from "./TaskList.module.css";
 interface TaskListProps {
   tasks: ITask[];
   onCheckTask: (taskId: number) => void;
+  onDeleteTask: (taskId: number) => void;
 }
 
-export function TaskList({ tasks, onCheckTask }: TaskListProps) {
+export function TaskList({ tasks, onCheckTask, onDeleteTask }: TaskListProps) {
   const totalOfTasks = tasks.length;
   const totalOfCompletedTasks = tasks.filter((task) => task.isSelected).length;
   return (
@@ -26,7 +27,7 @@ export function TaskList({ tasks, onCheckTask }: TaskListProps) {
       </header>
       <div className={styles.taskList}>
         {tasks.map((task) => (
-          <Task key={task.id} task={task} onCheckTask={onCheckTask} />
+          <Task key={task.id} task={task} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />
         ))}
       </div>
     </main>
