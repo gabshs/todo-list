@@ -11,6 +11,7 @@ export function InputTask({ onCreateNewTask }: InputTaskProps) {
 
   function handleCreateNewText() {
     onCreateNewTask(newTaskInput);
+    setNewTaskInput("");
   }
 
   function handleNewTaskInputChange(event: ChangeEvent<HTMLInputElement>) {
